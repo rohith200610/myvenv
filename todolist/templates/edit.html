@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit</title>
+</head>
+<body>
+    <form method="POST" action="/update/{{task._id}}"> 
+        <input type="text" value="{{task.task_name}}" name="task_name" placeholder="Enter task name" required><br><br>
+        <input type="text" value="{{task.task_description}}" name="task_description" placeholder="Enter task description"><br><br>
+       <select name="priority">
+    <option value="low" {% if task.priority == 'low' %}selected{% endif %}>Low</option>
+    <option value="medium" {% if task.priority == 'medium' %}selected{% endif %}>Medium</option>
+    <option value="high" {% if task.priority == 'high' %}selected{% endif %}>High</option>
+</select><br><br>
+
+
+        <input type="text" value="{{task.status}}" name="status" placeholder="Enter task status"><br><br>
+        <button type="submit">Add Task</button>
+    </form>
+    
+    
+</body>
+</html>

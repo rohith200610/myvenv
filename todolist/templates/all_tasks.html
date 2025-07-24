@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Tasks</title>
+</head>
+<body>
+    <h1>All Tasks</h1>
+    
+    {% if taskdata %}
+        <table border="1">
+            <tr>
+                <th>Task Name</th>
+                <th>Description</th>
+                <th>Priority</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+            {% for task in taskdata %}
+            <tr>
+                <td>{{ task.task_name }}</td>
+                <td>{{ task.task_description or 'No description' }}</td>
+                <td>{{ task.priority }}</td>
+                <td>{{ task.status }}</td>
+                <td>
+                    
+                   
+                    <a href="/edit/{{task._id}}" ><button>edit</button></a>
+                    <a href="/delete/{{task._id}}"><button>delete</button></a>
+
+                    
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No tasks found!</p>
+    {% endif %}
+    
+    <br>
+    <a href="/index">Add New Task</a> | 
+    <a href="/">Back to Home</a>
+</body>
+</html>
